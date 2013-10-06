@@ -14,6 +14,7 @@
 
         <link rel="stylesheet" href="<?php echo bloginfo('template_directory') ?>/css/normalize.css">
         <link rel="stylesheet" href="<?php echo bloginfo('template_directory') ?>/css/main.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_directory') ?>//css/foundation.min.css">
         <script src="<?php echo bloginfo('template_directory') ?>/js/vendor/modernizr-2.6.2.min.js"></script>
         <link rel="<?php echo bloginfo('template_directory') ?>/stylesheet/less" type="text/css" href="style.less" />
         <script src="<?php echo bloginfo('template_directory') ?>/js/less-1.3.3.min.js" type="text/javascript"></script>
@@ -29,6 +30,7 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="<?php echo bloginfo('template_directory') ?>/js/foundation.min.js"></script>
         <script src="<?php echo bloginfo('template_directory') ?>/js/plugins.js"></script>
         <script src="<?php echo bloginfo('template_directory') ?>/js/main.js"></script>
 
