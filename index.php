@@ -25,7 +25,27 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><a href="#">Top Bar Title </a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+</ul>
 
+<section class="top-bar-section">
+    <ul class="right">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">About</a></li>
+        <li class="has-form">
+        <a class="button" href="#">Search!</a>
+        </li>
+    </ul>
+</section>
+</nav>
         
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -33,6 +53,9 @@
         <script src="<?php echo bloginfo('template_directory') ?>/js/foundation.min.js"></script>
         <script src="<?php echo bloginfo('template_directory') ?>/js/plugins.js"></script>
         <script src="<?php echo bloginfo('template_directory') ?>/js/main.js"></script>
+        <script type="text/javascript">
+            $(document).foundation();
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
