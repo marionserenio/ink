@@ -25,56 +25,95 @@ function arphabet_widgets_init() {
 add_action( 'widgets_init', 'arphabet_widgets_init' );    
 
 // Registers the new post type and taxonomy
-function wpt_event_posttype() {
-	register_post_type( 'events',
+function wpt_shop_posttype() {
+	register_post_type( 'shops',
 		array(
 			'labels' => array(
-				'name' => __( 'Events' ),
-				'singular_name' => __( 'Event' ),
-				'add_new' => __( 'Add New Event' ),
-				'add_new_item' => __( 'Add New Event' ),
-				'edit_item' => __( 'Edit Event' ),
-				'new_item' => __( 'Add New Event' ),
-				'view_item' => __( 'View Event' ),
-				'search_items' => __( 'Search Event' ),
-				'not_found' => __( 'No events found' ),
-				'not_found_in_trash' => __( 'No events found in trash' )
+				'name' => __( 'Shops' ),
+				'singular_name' => __( 'Shop' ),
+				'add_new' => __( 'Add New Shop' ),
+				'add_new_item' => __( 'Add New Shop' ),
+				'edit_item' => __( 'Edit Shop' ),
+				'new_item' => __( 'Add New Shop' ),
+				'view_item' => __( 'View Shop' ),
+				'search_items' => __( 'Search Shop' ),
+				'not_found' => __( 'No shops found' ),
+				'not_found_in_trash' => __( 'No shops found in trash' )
 			),
 			'public' => true,
-			'supports' => array( 'title', 'editor', 'thumbnail', 'comments' ),
+			'supports' => array( 'title', 'thumbnail', 'comments' ),
 			'capability_type' => 'post',
-			'rewrite' => array("slug" => "events"), // Permalinks format
+			'rewrite' => array("slug" => "shops"), // Permalinks format
 			'menu_position' => 5,
-			'register_meta_box_cb' => 'add_events_metaboxes'
+			'register_meta_box_cb' => 'add_shop_metaboxes'
 		)
 	);
 }
-add_action( 'init', 'wpt_event_posttype' );
-add_action( 'add_meta_boxes', 'add_events_metaboxes' );
+add_action( 'init', 'wpt_shop_posttype' );
+add_action( 'add_meta_boxes', 'add_shop_metaboxes' );
 
-// Add the Events Meta Boxes
-function add_events_metaboxes() {
-	add_meta_box('wpt_events_location', 'Event Location', 'wpt_events_location', 'events', 'side', 'default');
+
+function add_shop_metaboxes(){
+	add_meta_box('wpt_shop_website', 'Shop website', 'wpt_shop_website', 'shops', 'side', 'default');
+	add_meta_box('wpt_shop_phone', 'Shop phone number', 'wpt_shop_phone', 'shops', 'side', 'default');
+	add_meta_box('wpt_shop_description', 'Shop Description', 'wpt_shop_description', 'shops', 'normal', 'high');
+	add_meta_box('wpt_shop_address', 'Shop Address', 'wpt_shop_address', 'shops', 'normal', 'high');
 }
 
-
-// The Event Location Metabox
-function wpt_events_location() {
+function wpt_shop_description(){
 	global $post;
-	// Noncename needed to verify where the data originated
-	echo '<input type="hidden" name="eventmeta_noncename" id="eventmeta_noncename" value="' .
-	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	// Get the location data if its already been entered
-	$location = get_post_meta($post->ID, '_location', true);
-	// Echo out the field
-	echo '<input type="text" name="_location" value="' . $location  . '" class="widefat" />';
+	echo '<input type="hidden" name="shopmeta_noncename" id="shopmeta_noncename" value="'.
+	wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+
+	$description = get_post_meta($post->ID, '_description', true);
+
+	echo '<textarea type="text" name="_description" value="'. $description . '"class="widefat" maxlength="200"></textarea>';
+}
+function wpt_shop_website(){
+	global $post;
+	echo '<input type="hidden" name="shopmeta_noncename" id="shopmeta_noncename" value="'.
+	wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+
+	$website = get_post_meta($post->ID, '_website', true);
+
+	echo '<input type="text" name="_website" value="'. $website . '"class="widefat" />';
+}
+function wpt_shop_phone(){
+	global $post;
+	echo '<input type="hidden" name="shopmeta_noncename" id="shopmeta_noncename" value="'.
+	wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+
+	$phone = get_post_meta($post->ID, '_phone', true);
+
+	echo '<input type="text" name="_phone" value="'. $phone . '"class="widefat" />';
+}
+function wpt_shop_address(){
+	global $post;
+	echo '<input type="hidden" name="shopmeta_noncename" id="shopmeta_noncename" value="'.
+	wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+
+	$street = get_post_meta($post->ID, '_street', true);
+	$address = get_post_meta($post->ID, '_address', true);
+	$state = get_post_meta($post->ID, '_state', true);
+	$postcode = get_post_meta($post->ID, '_postcode', true);
+	$country = get_post_meta($post->ID, '_country', true);
+	echo '<label>Street</label>';
+	echo '<input type="text" name="_street" value="'. $street . '"class="widefat" />';
+	echo '<label>Address</label>';
+	echo '<input type="text" name="_address" value="'. $address . '"class="widefat" />';
+	echo '<label>State</label>';
+	echo '<input type="text" name="_state" value="'. $state . '"class="widefat" />';
+	echo '<label>Post Code</label>';
+	echo '<input type="text" name="_postcode" value="'. $postcode . '"class="widefat" />';
+	echo '<label>Country</label>';
+	echo '<input type="text" name="_country" value="'. $country . '"class="widefat" />';
 }
 
-// Save the Metabox Data
-function wpt_save_events_meta($post_id, $post) {
+
+function wpt_save_shop_meta($post_id, $post){
 	// verify this came from the our screen and with proper authorization,
 	// because save_post can be triggered at other times
-	if ( !wp_verify_nonce( $_POST['eventmeta_noncename'], plugin_basename(__FILE__) )) {
+	if ( !wp_verify_nonce( $_POST['shopmeta_noncename'], plugin_basename(__FILE__) )) {
 	return $post->ID;
 	}
 	// Is the user allowed to edit the post or page?
@@ -82,9 +121,17 @@ function wpt_save_events_meta($post_id, $post) {
 		return $post->ID;
 	// OK, we're authenticated: we need to find and save the data
 	// We'll put it into an array to make it easier to loop though.
-	$events_meta['_location'] = $_POST['_location'];
-	// Add values of $events_meta as custom fields
-	foreach ($events_meta as $key => $value) { // Cycle through the $events_meta array!
+
+	$shops_meta['_website'] = $_POST['_website'];
+	$shops_meta['_phone'] = $_POST['_phone'];
+	$shops_meta['_street'] = $_POST['_street'];
+	$shops_meta['_address'] = $_POST['_address'];
+	$shops_meta['_state'] = $_POST['_state'];
+	$shops_meta['_postcode'] = $_POST['_postcode'];
+	$shops_meta['_country'] = $_POST['_country'];
+	$shops_meta['_description'] = $_POST['_description'];
+
+	foreach ($shops_meta as $key => $value) { // Cycle through the $events_meta array!
 		if( $post->post_type == 'revision' ) return; // Don't store custom data twice
 		$value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
 		if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
@@ -95,5 +142,17 @@ function wpt_save_events_meta($post_id, $post) {
 		if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
 	}
 }
-add_action('save_post', 'wpt_save_events_meta', 1, 2); // save the custom fields
+
+add_action('save_post', 'wpt_save_shop_meta', 1, 2); // save the custom fields
+
+add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+
+function add_my_post_types_to_query( $query ) {
+	if ( is_home() && $query->is_main_query() )
+		$query->set( 'post_type', array( 'post', 'page', 'shop' ) );
+	return $query;
+}
+
+set_post_thumbnail_size( 220, 193, true ); // 50 pixels wide by 50 pixels tall, crop mode
+
  ?>
