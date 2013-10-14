@@ -634,3 +634,83 @@ footer{
     }
   }
 }
+.pagination{
+  background: #fff;
+  border-bottom:1px solid #ebebeb;
+  padding:10px 5px 3px 5px;
+  .border-radius(2px);
+  overflow: hidden;
+  font-size:13px;
+  .page-numbers{
+    color:#666;
+  }
+  ul{
+    padding: 0px;
+    margin: 0px;
+    li{
+      .page-numbers{
+        margin-top:-6px;
+      }
+      &:first-child{
+        margin-left:270px;
+      }
+    }
+  }
+  .current{
+    font-weight: bold;
+    color:@pink;
+  }
+  .next{
+    display: block;
+    color:#fff;
+    padding:5px 10px 5px 10px;
+    background: @pink;
+    .border-radius(2px);
+    .transition(0.25s);
+    &:hover{
+      background: @pink - 20%;
+    }
+  }
+  .prev{
+    display: block;
+    color:#fff;
+    padding:5px 10px 5px 10px;
+    background: @pink;
+    .border-radius(2px);
+    .transition(0.25s);
+    &:hover{
+      background: @pink - 20%;
+    }
+  }  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
