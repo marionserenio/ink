@@ -18,7 +18,7 @@
         <script src="<?php echo bloginfo('template_directory') ?>/js/vendor/modernizr-2.6.2.min.js"></script>
         <link rel="stylesheet/less" type="text/css" href="<?php echo bloginfo('template_directory') ?>/style.less" />
         <script src="<?php echo bloginfo('template_directory') ?>/js/less-1.3.3.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
         <?php wp_head(); ?>
     </head>
     <body>
