@@ -17,7 +17,7 @@ Template Name: Search Page
 			<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
 			    <div><label class="screen-reader-text" for="s">Search for:</label>
 			        <input type="text" value="" name="s" id="s" />
-			        <input type="hidden" name="shops" value="post type name" />
+			        <input type="hidden" name="post_type" value="shops" />
 			        <input type="submit" id="searchsubmit" value="Search" />
 			    </div>
 			</form>
@@ -28,7 +28,7 @@ Template Name: Search Page
 				<?php 
 				// the query to set the posts per page to 3
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-				$args = array('posts_per_page' => 10, 'paged' => $paged, 'post_type' =>'shops');
+				$args = array('posts_per_page' => large-10, 'paged' => $paged, 'post_type' =>'shops');
 				query_posts($args); ?>
 				<!-- the loop -->
 				<?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
