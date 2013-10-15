@@ -14,11 +14,13 @@
 		?>
 		<div class="large-3 columns">
 			<div class="shop-box">
-			<?php if ( has_post_thumbnail() ) {
-			the_post_thumbnail();
-			} else { ?>
-			<img src="<?php bloginfo('template_directory'); ?>/img/thumbnail_default.jpg" alt="<?php the_title(); ?>" />
-			<?php } ?>
+			<a href="<?php the_permalink(); ?>">
+				<?php if ( has_post_thumbnail() ) {
+				the_post_thumbnail();
+				} else { ?>
+				<img src="<?php bloginfo('template_directory'); ?>/img/thumbnail_default.jpg" alt="<?php the_title(); ?>" />
+				<?php } ?>
+			</a>
 				<span class="shop-name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
 				<a class="shop-comments-number"><i class="icon-comment"></i><span class="number"><?php comments_number('0', '1', '%'); ?> </span></a>
 			</div>
