@@ -28,7 +28,7 @@ Template Name: Search Page
 				<?php 
 				// the query to set the posts per page to 3
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-				$args = array('posts_per_page' => 1, 'paged' => $paged, 'post_type' =>'shops');
+				$args = array('posts_per_page' => 10, 'paged' => $paged, 'post_type' =>'shops');
 				query_posts($args); ?>
 				<!-- the loop -->
 				<?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
