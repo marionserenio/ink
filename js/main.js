@@ -21,7 +21,7 @@
          //        }
          //    };
             
-         //    map = new google.maps.Map(document.getElementById("page-map"), mapOptions);
+         //    map = new google.maps.Map(document.getElementById("MapContent"), mapOptions);
 
          //    var mapType = new google.maps.StyledMapType(stylez, { name:"Grayscale" });    
          //    map.mapTypes.set('tehgrayz', mapType);

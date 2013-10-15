@@ -34,7 +34,11 @@ Template Name: Search Page
 				<?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
 				<li class="large-12">
 					<div class="thumbnail">
-						<?php the_post_thumbnail(); ?>
+						<?php if ( has_post_thumbnail() ) {
+						the_post_thumbnail();
+						} else { ?>
+						<img src="<?php bloginfo('template_directory'); ?>/img/thumbnail_default.jpg" alt="<?php the_title(); ?>" />
+						<?php } ?>
 					</div>
 					<div class="shop-info large-12">
 						<div class="shop-rating"><i class="icon-star"></i>24</div>

@@ -299,14 +299,17 @@ input[type="submit"], button, .button{
 }
 .comments{
   padding:30px 0px 30px 0px;
+}
   .comment-box{
     background: #fff;
     .border-radius(2px);
     overflow: hidden;
     padding:15px;
+    height: 150px;
     border-bottom:1px solid #d7d7d7;
     margin-bottom:20px;
     .transition(0.25s);
+    position: relative;
     &:hover{
       border-bottom:1px solid #969696;
       p{
@@ -320,6 +323,10 @@ input[type="submit"], button, .button{
       font-style: italic;
     }
     .comment-meta{
+      position: absolute;
+      bottom:10px;
+      left: 10px;
+      width: 95%;
       .star{
         float: left;
         .icon-star{
@@ -347,7 +354,6 @@ input[type="submit"], button, .button{
       }
     }
   }
-}
 .viewmore{
   text-align: center;
   font-size:12px;
@@ -530,17 +536,18 @@ footer{
         margin-left:10px;
         font-family: "open_sansbold", Arial, "Helvetica Neue", Helvetica, sans-serif;
         text-transform: capitalize;
-  font-weight: 200;
+        font-weight: 200;
       }
       p{
         clear: both;
         padding:10px;
-        border:1px solid #ebebeb;
+        border-bottom:1px solid #ebebeb;
         background: #fff;
         .border-radius(2px);
         margin: 0px;
         font-size:13px;
         color:#666;
+        font-style: italic;
       }
       .comment-reply-link{
         float: right;
@@ -558,7 +565,6 @@ footer{
             left: -20px;
             content: " ";
             width:21px;
-            border-left:1px solid #ebebeb;
             border-bottom:1px solid #ebebeb;
             height: 77px;
             position: absolute;
@@ -597,10 +603,9 @@ footer{
       margin-bottom:20px;
       .thumbnail{
         width: 95px;
-        height: 95px;
+        height: 84px;
         .border-radius(2px);
         float: left;
-        background: red;
         margin-right:20px;
         img{
           max-width: 100%;
@@ -683,34 +688,3 @@ footer{
     }
   }  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
